@@ -1,0 +1,10 @@
+server {
+    listen       443 ssl;
+    server_name  localhost;
+    ssl_certificate /etc/nginx/certs/site.crt;
+    ssl_certificate_key /etc/nginx/certs/site.key;
+
+    location / {
+        proxy_pass   http://backend:80;
+    }
+}
