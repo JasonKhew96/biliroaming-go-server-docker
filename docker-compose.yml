@@ -10,7 +10,7 @@ services:
     environment:
       - PG_PASSWORD_FILE=/run/secrets/db-password
     expose:
-      - 443
+      - 80
     depends_on:
       - db
   db:
