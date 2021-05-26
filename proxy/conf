@@ -1,10 +1,50 @@
 server {
-    listen       443 ssl;
-    server_name  localhost;
-    ssl_certificate /etc/nginx/certs/site.crt;
+    # https
+    listen  443 ssl;
+    listen  [::]:443 ssl;
+
+    server_name         localhost;
+
+    # 证书
+    ssl_certificate     /etc/nginx/certs/site.crt;
     ssl_certificate_key /etc/nginx/certs/site.key;
 
+    # 限制客户端请求大小
+    client_max_body_size 1M;
+
+    # 获取 CLOUDFLARE 真实 IP
+    # https://support.cloudflare.com/hc/en-us/articles/200170786-Restoring-original-visitor-IPs
+    # https://www.cloudflare.com/ips/
+    # ipv4
+    set_real_ip_from    173.245.48.0/20;
+    set_real_ip_from    103.21.244.0/22;
+    set_real_ip_from    103.22.200.0/22;
+    set_real_ip_from    103.31.4.0/22;
+    set_real_ip_from    141.101.64.0/18;
+    set_real_ip_from    108.162.192.0/18;
+    set_real_ip_from    190.93.240.0/20;
+    set_real_ip_from    188.114.96.0/20;
+    set_real_ip_from    197.234.240.0/22;
+    set_real_ip_from    198.41.128.0/17;
+    set_real_ip_from    162.158.0.0/15;
+    set_real_ip_from    172.64.0.0/13;
+    set_real_ip_from    131.0.72.0/22;
+    set_real_ip_from    104.16.0.0/13;
+    set_real_ip_from    104.24.0.0/14;
+    # ipv6
+    set_real_ip_from    2400:cb00::/32;
+    set_real_ip_from    2606:4700::/32;
+    set_real_ip_from    2803:f800::/32;
+    set_real_ip_from    2405:b500::/32;
+    set_real_ip_from    2405:8100::/32;
+    set_real_ip_from    2a06:98c0::/29;
+    set_real_ip_from    2c0f:f248::/32;
+
+    # 2 选 1
+    real_ip_header CF-Connecting-IP;
+    # real_ip_header X-Forwarded-For;
+
     location / {
-        proxy_pass   http://backend:80;
+        proxy_pass  http://backend:80;
     }
 }
