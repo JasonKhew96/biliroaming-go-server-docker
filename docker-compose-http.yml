@@ -15,7 +15,6 @@ services:
       - db
   db:
     image: postgres
-    restart: always
     env_file:
       - production.env
     secrets:
