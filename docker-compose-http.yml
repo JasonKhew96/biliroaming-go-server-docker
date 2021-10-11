@@ -1,35 +1,54 @@
 version: "3.8"
 services:
   backend:
+    # 拉取的镜像
     image: jasonkhew96/biliroaming-go-server
+    # 重启政策
     restart: always
+    # 环境变量文件
     env_file:
       - production.env
+    # 用于读取文件里的密码，先在下边声明此文件
     secrets:
       - db-password
+    # 环境变量，设置 secrets 后，文件会映射到 "/run/secrets/[filename]"
     environment:
       - PG_PASSWORD_FILE=/run/secrets/db-password
+    # 映射端口:容器端口
     ports:
       - 80:80
+    # 依赖，以下容器必须先启动
     depends_on:
       - db
+    # 连接容器以外的代理
+    # 替换 "127.0.0.1" 或 "localhost"
+    # 为 "host.docker.internal" 当作域名
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
   db:
+    # 拉取的镜像
     image: postgres
+    # 重启政策
+    restart: always
+    # 环境变量文件
     env_file:
       - production.env
+    # 用于读取文件里的密码，先在下边声明此文件
     secrets:
       - db-password
+    # 存储
     volumes:
       - db-data:/var/lib/postgresql/data
+    # 环境变量，设置 secrets 后，文件会映射到 "/run/secrets/[filename]"
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    expose:
-      - 5432
 
+# 存储
 volumes:
   db-data:
 
+# 密码文件声明
 secrets:
   db-password:
     file: db/password.txt

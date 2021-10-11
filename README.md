@@ -11,8 +11,3 @@ docker-compose 规则
 1. 复制 `production.env.example` --> `production.env`，修改 环境变量
 2. 修改 PostgreSQL 数据库密码 `db/password.txt`
 3. 当前文件夹执行 `docker-compose -f docker-compose-http.yml up -d --build --force-recreate`
-
-### 裸连无DB
-1. 复制 `production.env.example` --> `production.env`，修改 环境变量
-2. 修改 PostgreSQL 数据库密码 `db/password.txt`
-3. 当前文件夹执行 `docker-compose -f docker-compose-http-no-db.yml up -d --build --force-recreate`
