@@ -20,6 +20,9 @@ services:
     # 依赖，以下容器必须先启动
     depends_on:
       - db
+    # 映射 html 文件夹进去容器内
+    volumes:
+      - ./html/:/runner/html/
     # 连接容器以外的代理
     # 替换 "127.0.0.1" 或 "localhost"
     # 为 "host.docker.internal" 当作域名
