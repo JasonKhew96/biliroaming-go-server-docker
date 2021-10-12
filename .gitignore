@@ -1,1 +1,4 @@
 production.env
+html/
+db/password.txt
+proxy/certs/
