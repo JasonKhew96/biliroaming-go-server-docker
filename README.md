@@ -1,6 +1,14 @@
 # biliroaming-go-server-docker
 docker-compose 规则
 
+## 文件夹说明
+```
+config/ - 设置文件
+db/ - PostGreSQL 数据库密码
+html/ - 自定义首页
+proxy/ - nginx 证书配置
+```
+
 ## 使用方式
 ### 使用 nginx
 1. 复制 `production.env.example` --> `production.env`，修改 环境变量
