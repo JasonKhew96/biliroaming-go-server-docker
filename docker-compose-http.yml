@@ -2,7 +2,7 @@ version: "3.8"
 services:
   backend:
     # 拉取的镜像
-    image: jasonkhew96/biliroaming-go-server
+    image: jasonkhew96/biliroaming-go-server:1.1.0
     # 重启政策
     restart: always
     # 环境变量文件
@@ -23,6 +23,7 @@ services:
     # 映射 html 文件夹进去容器内
     volumes:
       - ./html/:/runner/html/
+      - ./config/:/runner/config/
     # 连接容器以外的代理
     # 替换 "127.0.0.1" 或 "localhost"
     # 为 "host.docker.internal" 当作域名
