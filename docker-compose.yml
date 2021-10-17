@@ -5,15 +5,9 @@ services:
     image: jasonkhew96/biliroaming-go-server:1.1.0
     # 重启政策
     restart: always
-    # 环境变量文件
-    env_file:
-      - production.env
     # 用于读取文件里的密码，先在下边声明此文件
     secrets:
       - db-password
-    # 环境变量，设置 secrets 后，文件会映射到 "/run/secrets/[filename]"
-    environment:
-      - PG_PASSWORD_FILE=/run/secrets/db-password
     # 映射端口:容器端口
     ports:
       - 80:80
@@ -34,9 +28,6 @@ services:
     image: postgres
     # 重启政策
     restart: always
-    # 环境变量文件
-    env_file:
-      - production.env
     # 用于读取文件里的密码，先在下边声明此文件
     secrets:
       - db-password
