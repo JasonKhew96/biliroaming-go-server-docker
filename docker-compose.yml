@@ -2,7 +2,7 @@ version: "3.8"
 services:
   backend:
     # 拉取的镜像
-    image: jasonkhew96/biliroaming-go-server:1.1.0
+    image: jasonkhew96/biliroaming-go-server
     # 重启政策
     restart: always
     # 用于读取文件里的密码，先在下边声明此文件
@@ -24,8 +24,9 @@ services:
     # extra_hosts:
     #   - "host.docker.internal:host-gateway"
   db:
+    build: db
     # 拉取的镜像
-    image: postgres
+    # image: postgres
     # 重启政策
     restart: always
     # 用于读取文件里的密码，先在下边声明此文件
