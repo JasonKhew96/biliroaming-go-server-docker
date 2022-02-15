@@ -1,7 +1,7 @@
 # 调试模式
 debug: false
 # 监听端口
-port: 443
+port: 80
 
 # 黑白名单模式
 # 0 - 禁用
@@ -34,7 +34,7 @@ customSearch:
 
 # 自定义插入字幕
 customSubtitle:
-  apiUrl: 'https://example.com/path?season_id=%s'
+  apiUrl: 'https://example.com/path?season_id=%d'
   teamName: '蒙古上单字幕组'
 
 # 缓存时间
