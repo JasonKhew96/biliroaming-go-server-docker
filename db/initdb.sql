@@ -8,6 +8,7 @@ CREATE TABLE users(
 CREATE TABLE access_keys(
     key CHAR(32) PRIMARY KEY NOT NULL,
     uid BIGINT REFERENCES users(uid) NOT NULL,
+    client_type VARCHAR(32) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL
 );
