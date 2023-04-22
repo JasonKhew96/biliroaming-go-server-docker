@@ -2,6 +2,8 @@
 debug: false
 # 监听端口
 port: 80
+# 启用 ipv6 (仅连接反代使用)
+ipv6: false
 
 # 仅限大会员用户使用
 vipOnly: false
@@ -65,6 +67,9 @@ cache:
   thSubtitle: 15m
 
 # 代理
+# 实例
+#   socks5://localhost:9050
+#   username:password@localhost:9050
 proxy:
   cn: socks5://127.0.0.1:7890
   hk: socks5://127.0.0.1:7891
